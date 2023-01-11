@@ -15,10 +15,10 @@ public class Num10950 {
 //		Scanner sc = new Scanner(System.in);
 //		int num = sc.nextInt();
 //		
-//		for (int i = 0; i < num; i++) {
+//		for (int i = 0; i < num; i++) {		// num 만큼 반복 
 //			int num2 = sc.nextInt();
 //			int num3 = sc.nextInt();
-//			System.out.println(num2 + num3);
+//			System.out.println(num2 + num3);	// num2 + num3 출력
 //		}
 //		
 //		sc.close();

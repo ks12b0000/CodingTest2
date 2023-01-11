@@ -15,7 +15,7 @@ public class Num2739 {
 //		int num = sc.nextInt();
 //		
 //		for (int i = 1; i <= 9; i++) {
-//			System.out.println(num + " * " + i + " = " + num * i);
+//			System.out.println(num + " * " + i + " = " + num * i);	// num * i = num * 1 ~ num * 9 까지 출력
 //		}
 //		
 //		sc.close();
