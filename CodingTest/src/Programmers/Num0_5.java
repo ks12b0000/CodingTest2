@@ -23,7 +23,7 @@ public class Num0_5 {
 //    }
 	public int solution(String A, String B) {
         return (B + B).indexOf(A);				// ex) A = "hello" B = "ohell" 일 때 "ohellohell"에서 A문자열 찾으면 1번째 자리 나
-    }
+	}
 //	public static void main(String[] args) {
 //		Num0_5 T = new Num0_5();
 //		Scanner sc = new Scanner(System.in);
