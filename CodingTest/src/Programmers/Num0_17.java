@@ -3,7 +3,6 @@ package Programmers;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Num0_17 {
@@ -26,14 +25,12 @@ public class Num0_17 {
         
         return answer;
     }
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Num0_17 T = new Num0_17();
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		StringTokenizer st = new StringTokenizer(br.readLine(), "\n");
-//		String my_string = st.nextToken();
-		Scanner sc = new Scanner(System.in);
-		String my_string = sc.next();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), "\n");
+		String my_string = st.nextToken();
 		System.out.println(T.solution(my_string));
-		sc.close();
+		br.close();
 	}
 }
