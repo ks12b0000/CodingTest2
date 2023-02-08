@@ -14,7 +14,7 @@ public class Num1_12 {
         	System.out.println(arr);
         	if (arr.size() >= 4) { // arr크키가 4랑 같거나 크면
         		if (arr.get(arr.size() - 4) == 1 && arr.get(arr.size() - 3) == 2 && 
-        				arr.get(arr.size() - 2) == 3 && arr.get(arr.size() - 1) == 1) { // 0, 1, 2, 3 자리 값이 1,2,3,1 이면 
+        				arr.get(arr.size() - 2) == 3 && arr.get(arr.size() - 1) == 1) { // 마지막 4자리 값이 1,2,3,1 이면 
         			answer++; // answer 증가하고 arr에서 지워줌.
         			arr.remove(arr.size() - 4);
         			arr.remove(arr.size() - 3);
