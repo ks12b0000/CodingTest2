@@ -15,7 +15,7 @@ public class Num0_35 {
 					rank++;
 				}
 			}
-			answer[i] = rank; // answer[i]에 rank값 저
+			answer[i] = rank; // answer[i]에 rank값 저장
 		}
         
         return answer;
