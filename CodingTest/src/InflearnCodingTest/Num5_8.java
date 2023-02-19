@@ -1,16 +1,45 @@
 package InflearnCodingTest;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+class Person {
+	int id;
+	int priority;
+	
+	public Person(int id, int priority) {
+		this.id = id;
+		this.priority = priority;
+	}
+}
+
 public class Num5_8 {
 	public int solution(int n, int m, int[] patient) {
-		int answer = 0;
-		Queue<Integer> queue = new LinkedList<>();
+		int answer = 1;
+		Queue<Person> queue = new LinkedList<>();
 		
 		for (int i = 0; i < n; i++) {
-			queue.offer(patient[i]);
+			queue.offer(new Person(i, patient[i]));
+		}
+		while (!queue.isEmpty()) {
+			Person person = queue.poll();
+			for (Person x : queue) {
+				if (x.priority > person.priority) {
+					queue.offer(person);
+					person = null;
+					break;
+				}
+			}
+			if (person != null) {
+				if (person.id == m) {
+					return answer;
+				}
+				else {
+					answer++;
+				}
+			}
 		}
 				
 		return answer;
