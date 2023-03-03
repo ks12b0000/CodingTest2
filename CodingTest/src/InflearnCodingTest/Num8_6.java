@@ -1,20 +1,25 @@
 package InflearnCodingTest;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Num8_6 {
-	static int answer = Integer.MAX_VALUE, n, m;
-	public void DFS(int L, int sum, Integer[] arr) {
-		if (L >= answer) return;
-		if (sum > m) return;
-		if (sum == m) {
-			answer = Math.min(answer, L);
+	static int[] pm, ch, arr;
+	static int n, m;
+	public void DFS(int L) {
+		if (L == m) {
+			for (int x : pm) {
+				System.out.print(x + " ");
+			}
+			System.out.println();
 		}
 		else {
 			for (int i = 0; i < n; i++) {
-				DFS(L + 1, sum + arr[i], arr);
+				if (ch[i] == 0) {
+					ch[i] = 1;
+					pm[L] = arr[i];
+					DFS(L + 1);
+					ch[i] = 0;
+				}			
 			}
 		}
 	}
@@ -22,14 +27,14 @@ public class Num8_6 {
 		Num8_6 T = new Num8_6();
 		Scanner sc = new Scanner(System.in);
 		n = sc.nextInt();
-		Integer[] arr = new Integer[n];
+		m = sc.nextInt();
+		arr = new int[n];
 		for (int i = 0; i < n; i++) {
 			arr[i] = sc.nextInt();
 		}
-		Arrays.sort(arr, Collections.reverseOrder());
-		m = sc.nextInt();
-		T.DFS(0, 0, arr);
-		System.out.println(answer);
+		ch = new int[n];
+		pm = new int[m];
+		T.DFS(0);
 		sc.close();
 	}
 }
