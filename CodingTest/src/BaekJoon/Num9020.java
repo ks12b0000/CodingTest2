@@ -1,43 +1,41 @@
 package BaekJoon;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Num9020 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int t = sc.nextInt();
-		for (int m = 0; m < t; m++) {
-			ArrayList<Integer> answer = new ArrayList<>();
-			int d = sc.nextInt();
-			for (int i = 2; i < d; i++) {
-				int cnt = 0;
-				for (int j = 1; j <= i; j++) {
-					if (i % j == 0) {
-						cnt++;
-					}
-				}
-				if (cnt == 2) {
-					answer.add(i);
-				}
-			}
-			ArrayList<Integer> size = new ArrayList<>();
-			for (int i = 0; i < answer.size(); i++) {	
-				for (int j = 1; j < answer.size() - 1; j++) {
-					if (answer.get(i) + answer.get(j) == d) {
-						size.add(answer.get(i) - answer.get(j));				
-					}
-					if (answer.get(i) + answer.get(j) == d) {
-						if (size.get(0) == answer.get(i) - answer.get(j)) {
-							System.out.println(answer.get(i) + " " + answer.get(j));
-						}
-					}
-				}
-			}
-			
-			
-		}
-		
+		for (int i = 0; i < t; i++) {
+            int num = sc.nextInt();
+            int key = gold(num);
+            System.out.println(key + " " + (num - key));
+        }	
 		sc.close();
 	}
+	public static boolean prime(int num) {
+		for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+	}
+	// 주어진 값에서 소수의 합을 찾는 메소드
+    public static int gold(int num) {
+        int key = 0;
+
+        // 중복되는 연산을 줄이기 위해 num/2
+        for (int i = num / 2; i >= 0; i--) {
+            // 우선 i가 소수이고
+            if (prime(i)){
+                // (주어진 수 - 소수)가 다시 소수이면 값을 저장
+                if (prime(num - i)){
+                    // 많은 골드바흐 파티션 중 두 수의 차이가 가장 작은 수는
+                    // num/2 부터 탐색했을 때 처음 찾은 두 수가 소수일 때
+                   key = i;
+                   break;
+                }
+            }            
+        }
+        return key;
+    }
 }
