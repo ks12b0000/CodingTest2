@@ -10,39 +10,41 @@ import java.util.StringTokenizer;
 public class Num10815 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int N = Integer.parseInt(br.readLine());
-		int[] nArr = new int[N];
+		int n = Integer.parseInt(br.readLine());
+		int[] narr = new int[n];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		for (int i = 0; i < N; i++) {
-			nArr[i] = Integer.parseInt(st.nextToken());
+		
+		for (int i = 0; i < n; i++) {
+			narr[i] = Integer.parseInt(st.nextToken());
 		}
-		Arrays.sort(nArr);
-		int M = Integer.parseInt(br.readLine());
-
+		Arrays.sort(narr);
+		
+		int m = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
 		StringBuilder sb = new StringBuilder();
-		st = new StringTokenizer(br.readLine(), " ");
-		for (int i = 0; i < M; i++) {
-            int m = Integer.parseInt(st.nextToken());
-            int left = 0;
-            int right = N - 1;
-            while (left <= right) {
-                int mid = (left + right) / 2;
-                int n = nArr[mid];
-                if (n == m) {
-                    sb.append(1 + " ");
-                    break;
-                }
-                if (n > m) { //지금 상근이 카드보다 더 작은거 찾아야함
-                    right = mid - 1;
-                } else {
-                    left = mid + 1;
-                }
-                if (left > right) {
-                    sb.append(0 + " ");
-                    break;
-                }
-            }
-        }
+		
+		for (int i = 0; i < m; i++) {
+			int marr = Integer.parseInt(st.nextToken());
+			int lt = 0;
+			int rt = n - 1;
+			while (lt <= rt) {
+				int mid = (lt + rt) / 2;
+				if (narr[mid] == marr) {
+					sb.append(1 + " ");
+					break;
+				}
+				if (narr[mid] > marr) {
+					rt = mid - 1;
+				}
+				else {
+					lt = mid + 1;
+				}
+				if (lt > rt) {
+					sb.append(0 + " ");
+					break;
+				}
+			}
+		}
 		
 		System.out.println(sb);
 		
