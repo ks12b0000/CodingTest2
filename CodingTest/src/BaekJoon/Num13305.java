@@ -5,28 +5,34 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Num10986 {
+public class Num13305 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		long[] dist = new long[n - 1];
+		long[] cost = new long[n];
+		
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		int n = Integer.parseInt(st.nextToken());
-		int m = Integer.parseInt(st.nextToken());
-		int sum = 0;
-		int[] cnt = new int[m];
+		for (int i = 0; i < n - 1; i++) {
+			dist[i] = Long.parseLong(st.nextToken());
+		}
 		
 		st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < n; i++) {
-			sum = (sum + Integer.parseInt(st.nextToken())) % m;
-			cnt[sum]++;
+			cost[i] = Long.parseLong(st.nextToken());
 		}
 		
-		long result = cnt[0];
+		long sum = 0;
+		long min = cost[0];
 		
-		for (int i = 0; i < m; i++) {
-			result += (long) cnt[i] * (cnt[i] - 1) / 2;
+		for (int i = 0; i < n - 1; i++) {
+			if (cost[i] < min) {
+				min = cost[i];
+			}
+			sum += min * dist[i];
 		}
 		
-		System.out.println(result);
+		System.out.println(sum);
 		
 		br.close();
 	}
