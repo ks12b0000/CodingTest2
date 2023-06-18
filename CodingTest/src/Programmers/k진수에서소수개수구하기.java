@@ -35,7 +35,7 @@ public class k진수에서소수개수구하기 {
         if (sosu(start)) {
         	answer++;
         }
-        if (sosu(end) && end != 0) {
+        if (sosu(end)) {
         	answer++;
         }
         
