@@ -4,32 +4,28 @@ import java.util.ArrayList;
 
 public class 모음사전 {
 	static char[] words = {'A', 'E', 'I', 'O', 'U'};
-	public int solution(String word) {
-        int answer = 0;
+    static ArrayList<String> list = new ArrayList<>();
+    static int answer;
+    public int solution(String word) {
         
-        ArrayList<String> list = new ArrayList<String>();
-        
-        for (int i = 0; i < words.length; i++) {
-        	DFS(list, words[i] + "");
+        for (char x : words) {
+            DFS(x + "");
         }
         
-        for (int i = 0; i < list.size(); i++) {
-        	if (list.get(i).equals(word)) {
-        		answer = i + 1;
-        		break;
-        	}
+        for (String str : list) {
+            answer++;
+            if (str.equals(word)) break;
         }
         
         return answer;
     }
-	static void DFS(ArrayList<String> list, String str) {
-		if (str.length() > 5) return;
-		if (!list.contains(str)) {
-			list.add(str);
-		}
-		
-		for (int i = 0; i < words.length; i++) {
-			DFS(list, str + words[i]);
-		}
-	}
+    static void DFS(String str) {
+        if (str.length() > 5) return;
+        if (!list.contains(str)) {
+            list.add(str);
+        }
+        for (char x : words) {
+            DFS(str + x);
+        }
+    }
 }
