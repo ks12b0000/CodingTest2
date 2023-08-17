@@ -7,28 +7,27 @@ public class 신고결과받기 {
 	public int[] solution(String[] id_list, String[] report, int k) {
         int[] answer = new int[id_list.length];
         
-        HashMap<String, HashSet<String>> hashMap = new HashMap<String, HashSet<String>>();
-        HashMap<String, Integer> hashMap2 = new HashMap<String, Integer>();
+        HashMap<String, HashSet<String>> map = new HashMap<>();
         
         for (int i = 0; i < id_list.length; i++) {
-        	hashMap.put(id_list[i], new HashSet<String>());
-        	hashMap2.put(id_list[i], i);
+            map.put(id_list[i], new HashSet<>());
         }
         
-        for (int i = 0; i < report.length; i++) {
-        	String[] str = report[i].split(" ");
-        	hashMap.get(str[1]).add(str[0]);
+        for (String str : report) {
+            String[] arr = str.split(" ");
+            map.get(arr[1]).add(arr[0]);
         }
         
-        for (int i = 0; i < id_list.length; i++) {
-            HashSet<String> send = hashMap.get(id_list[i]);
-            if (send.size() >= k) {
-                for (String name : send) {
-                    answer[hashMap2.get(name)]++;
+        for (String str : map.keySet()) {
+            if (map.get(str).size() >= k) {
+                for (int i = 0; i < id_list.length; i++) {
+                    if (map.get(str).contains(id_list[i])) {
+                    	answer[i] += 1;
+                    }
                 }
             }
         }
-        
+                
         return answer;
     }
 }
