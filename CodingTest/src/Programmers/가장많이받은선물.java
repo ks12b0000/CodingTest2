@@ -11,24 +11,18 @@ public class 가장많이받은선물 {
         HashMap<String, Integer> giftHistory = new HashMap<>();
         HashMap<String, Integer> nextMonthGift = new HashMap<>();
         
-        for (int i = 0; i < friends.length - 1; i++) {
-            giftHistory.put(friends[i], 0);
-            for (int j = i + 1; j < friends.length; j++) {
-                String str = friends[i] + " " + friends[j];
-                String s = friends[j] + " " + friends[i];
-                giftSend.put(str, 0);
-                giftReceive.put(s, 0);
-                giftHistory.put(friends[j], 0);
-            }         
+        for (String friend : friends) {
+            giftHistory.put(friend, 0);   
         }
         
-        for (String str : gifts) {
-            String[] tmp = str.split(" ");
+        for (String gift : gifts) {
+            String[] tmp = gift.split(" ");
             String s = tmp[1] + " " + tmp[0];
-            giftSend.put(str, giftSend.getOrDefault(str, 0) + 1);
+            
+            giftSend.put(gift, giftSend.getOrDefault(gift, 0) + 1);
             giftReceive.put(s, giftReceive.getOrDefault(s, 0) + 1);
-            giftHistory.put(tmp[0], giftHistory.getOrDefault(tmp[0], 0) + 1);
-            giftHistory.put(tmp[1], giftHistory.getOrDefault(tmp[1], 0) - 1);
+            giftHistory.put(tmp[0], giftHistory.get(tmp[0]) + 1);
+            giftHistory.put(tmp[1], giftHistory.get(tmp[1]) - 1);
         }
         
         for (int i = 0; i < friends.length - 1; i++) {
