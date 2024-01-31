@@ -36,14 +36,15 @@ public class Num2644 {
 		
 		sc.close();
 	}
-	static void findGraph(int start, int end, int cnt) {	
-		if (start == end) {
+	static void findGraph(int cur, int end, int cnt) {	
+		if (cur == end) {
 			answer = cnt;
 			return;
 		}
 		
-		visit[start] = true;
-		for (int next : graph.get(start)) {
+		visit[cur] = true;
+		
+		for (int next : graph.get(cur)) {
 			if (!visit[next]) {
 				findGraph(next, end, cnt + 1);
 			}
