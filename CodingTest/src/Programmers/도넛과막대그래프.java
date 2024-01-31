@@ -45,6 +45,7 @@ public class 도넛과막대그래프 {
         	// 나간 간선의 횟수가 2이상이고 들어온 간선의 횟수가 없는 경우의 정점이 중심 정점이다.
             if (outTrunk.get(vertex) >= 2 && !inTrunk.containsKey(vertex)) {
                 createdVertex = vertex;
+                break;
             }
         }
         
